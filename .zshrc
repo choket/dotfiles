@@ -12,6 +12,7 @@ export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/u
 export PATH=$PATH:$HOME/go/bin
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export GIT_EDITOR='vim +startinsert'
 
 ######################### <env_vars> #################################
 ####################  <auto_completion>  #############################
