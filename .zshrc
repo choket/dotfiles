@@ -74,6 +74,9 @@ bindkey '^[[1;5D' backward-word
 bindkey $key[Up] up-line-or-history
 bindkey $key[Down] down-line-or-history
 
+# Enable Alt-Period, Ctrl-R and other bash-like shortcuts 
+bindkey -e
+
 ############################ </.inputrc> #############################
 
 ############################### <alias> ##############################
