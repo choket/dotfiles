@@ -72,8 +72,8 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
 # Set a bash-like history
-bindkey $key[Up] up-line-or-history
-bindkey $key[Down] down-line-or-history
+bindkey '^[[A' up-line-or-history
+bindkey '^[[B' down-line-or-history
 
 # Enable Alt-Period, Ctrl-R and other bash-like shortcuts 
 bindkey -e
