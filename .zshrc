@@ -3,7 +3,7 @@ PROMPT="[%*] [%F{red}%n%f] [%F{blue}%~%f] %# "
 
 # Treat the following chars as part of a word, i.e. don't break on them
 # when doing Ctrl-Backspace or Ctrl-Arrow
-WORDCHARS=$'\'"*?_[]~=&;!#$%^(){}<>|'
+WORDCHARS=$'*?_[]~=&;!#$%^(){}<>|'
 
 ######################### <env_vars> #################################
 # Export PATH$
@@ -119,7 +119,13 @@ if command -v script &> /dev/null && [[ "$ENABLE_LOGGING" == 1 ]] && [ -z "$IS_C
 	echo "All logs will be written to $log_directory"
   fi
 
-  output_file="$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
+  if [ "$TMUX" ] ; then
+    tmux_session=$(tmux display-message -p '#S')
+    output_file="$tmux_session-$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
+  else
+    output_file="$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
+  fi
+  
   exec script -q -c 'ZSH_RUN_AS_INTERACTIVE=1 IS_CURRENTLY_LOGGING=1 zsh' "$log_directory/$output_file"
 fi
 
