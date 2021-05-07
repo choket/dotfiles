@@ -107,3 +107,19 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   #exec tmux
   tmux
 fi
+
+# Log the terminal's output to a file if $ENABLE_LOGGING is set to 1.
+if command -v script &> /dev/null && [[ "$ENABLE_LOGGING" == 1 ]] && [ -z "$IS_CURRENTLY_LOGGING" ] ; then
+  # Get the log directory from $LOG_DIRECTORY or default to "$PWD/terminal_logs"
+  log_directory=${LOG_DIRECTORY:-$PWD/terminal_logs}
+  mkdir -p "$log_directory"
+
+  if [[ -z "$LOG_DIRECTORY" ]]; then
+    echo "WARNING: Logging is enabled but LOG_DIRECTORY is not set."
+	echo "All logs will be written to $log_directory"
+  fi
+
+  output_file="$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
+  exec script -q -c 'ZSH_RUN_AS_INTERACTIVE=1 IS_CURRENTLY_LOGGING=1 zsh' "$log_directory/$output_file"
+fi
+
