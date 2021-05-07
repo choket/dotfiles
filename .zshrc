@@ -38,7 +38,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
-export HISTTIMEOFRMAT="[%F %T]"
+export HISTTIMEFORMAT="[%F %T]"
 
 # Append, don't overwrite the histfile
 setopt APPEND_HISTORY
@@ -107,4 +107,3 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   #exec tmux
   tmux
 fi
-
