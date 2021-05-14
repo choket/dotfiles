@@ -123,11 +123,18 @@ if command -v script &> /dev/null && [[ "$ENABLE_LOGGING" == 1 ]] && [ -z "$IS_C
 
   if [ "$TMUX" ] ; then
     tmux_session=$(tmux display-message -p '#S')
-    output_file="$tmux_session-$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
+    output_file="$tmux_session-$TMUX_PANE-$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
   else
     output_file="$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
   fi
   
-  exec script -f -q -c 'ZSH_RUN_AS_INTERACTIVE=1 IS_CURRENTLY_LOGGING=1 zsh' "$log_directory/$output_file"
+  #exec script -f -q -c 'ZSH_RUN_AS_INTERACTIVE=1 IS_CURRENTLY_LOGGING=1 zsh' "$log_directory/$output_file"
+ 
+  # Log pane output to a file everytime a zsh prompt is shown
+  if [ "$TMUX" ] ; then
+    precmd() {
+      ( tmux capture-pane -e -J -p -t $(echo $TMUX_PANE) -S - -E - > "$log_directory/$output_file" & )
+    }
+  fi 
 fi
 
