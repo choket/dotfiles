@@ -97,6 +97,8 @@ alias codium='codium --no-sandbox --user-data-dir /tmp/vscode'
 # Show Date and time when executing history command
 alias history='history -E'
 
+alias clip='xclip -sel c -r; xclip -sel c -o | xclip -sel p'
+
 ############################## </alias> ##############################
 
 # Start tmux automatically when launching a terminal
@@ -126,6 +128,6 @@ if command -v script &> /dev/null && [[ "$ENABLE_LOGGING" == 1 ]] && [ -z "$IS_C
     output_file="$(head /dev/random | tr -dc A-Za-z0-9 | head -c15).log"
   fi
   
-  exec script -q -c 'ZSH_RUN_AS_INTERACTIVE=1 IS_CURRENTLY_LOGGING=1 zsh' "$log_directory/$output_file"
+  exec script -f -q -c 'ZSH_RUN_AS_INTERACTIVE=1 IS_CURRENTLY_LOGGING=1 zsh' "$log_directory/$output_file"
 fi
 
