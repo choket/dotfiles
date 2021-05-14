@@ -6,9 +6,9 @@ rm ~/.zshrc
 rm ~/.tmux.conf
 rm ~/.vimrc
 
-ln -s "$current_dir/.zshrc" ~/.zshrc
-ln -s "$current_dir/.zshenv" ~/.zshenv
-ln -s "$current_dir/.tmux.conf" ~/.tmux.conf
-ln -s "$current_dir/.vimrc" ~/.vimrc
+ln -fs "$current_dir/.zshrc" ~/.zshrc
+ln -fs "$current_dir/.zshenv" ~/.zshenv
+ln -fs "$current_dir/.tmux.conf" ~/.tmux.conf
+ln -fs "$current_dir/.vimrc" ~/.vimrc
 
 find . -type f -iname '.*' -exec chmod 600 {} \;
