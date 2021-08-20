@@ -90,7 +90,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Make ffuf match all response codes except 404 and send found items to Burp
-alias ffuf='ffuf -mc all -fc 404 -replay-proxy "http://127.0.0.1:8081"'
+alias ffuf='ffuf -mc all -fc 404 -replay-proxy "http://127.0.0.1:8081" -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0"'
 
 #Make codium work when executed as root
 alias codium='codium --no-sandbox --user-data-dir /tmp/vscode'
