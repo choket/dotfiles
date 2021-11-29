@@ -98,7 +98,15 @@ alias codium='codium --no-sandbox --user-data-dir /tmp/vscode'
 # Show Date and time when executing history command
 alias history='history -E'
 
+# Add clip command which puts STDIN to primary and selection clipboard
 alias clip='xclip -sel c -r; xclip -sel c -o | xclip -sel p'
+
+
+# Set display to 1920x1080@60Hz 
+alias setdisplay1080='xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync;xrandr --addmode Virtual1 1920x1080_60.00;xrandr --output Virtual1 --mode 1920x1080_60.00'
+
+# Set display to 2560x1440@60Hz
+alias setdisplay1440='xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync;xrandr --addmode Virtual1 2560x1440_60.00;xrandr --output Virtual1 --mode 2560x1440_60.00'
 
 ############################## </alias> ##############################
 
