@@ -7,3 +7,4 @@ if [[ "$ZSH_RUN_AS_INTERACTIVE" == 1 ]]; then
     source ~/.zshrc
 fi
 
+source ~/.zshrc
