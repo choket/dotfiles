@@ -95,12 +95,19 @@ alias ffuf='ffuf -mc all -fc 404 -replay-proxy "http://127.0.0.1:8081" -H "User-
 #Make codium work when executed as root
 alias codium='codium --no-sandbox --user-data-dir /tmp/vscode'
 
+#Make obsidian work when executed as root
+alias obsidian='obsidian --no-sandbox'
+
 # Show Date and time when executing history command
 alias history='history -E'
 
 # Add clip command which puts STDIN to primary and selection clipboard
 alias clip='xclip -sel c -r; xclip -sel c -o | xclip -sel p'
 
+# Scan for SNMP when doing nmap, cause I always forget that
+alias nmap='echo Dont forget to scan for SNMP... >/dev/stderr;nmap'
+
+alias bat='batcat'
 
 # Set display to 1920x1080@60Hz 
 alias setdisplay1080='xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync;xrandr --addmode Virtual1 1920x1080_60.00;xrandr --output Virtual1 --mode 1920x1080_60.00'
