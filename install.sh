@@ -1,5 +1,8 @@
 #!/bin/bash
 
+apt -y install tmux zsh
+chsh -s /bin/zsh
+
 current_dir=$(dirname "$(readlink -f "$0")")
 
 rm ~/.zshrc
